@@ -1,0 +1,26 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+from sklearn.datasets import make_blobs
+
+# Generate a synthetic dataset
+X, _ = make_blobs(n_samples=300, centers=4, random_state=42)
+
+# Create a DataFrame
+data = pd.DataFrame(X, columns=['Feature1', 'Feature2'])
+
+# Initialize K-Means with 4 clusters
+model = KMeans(n_clusters=4, random_state=42)
+
+# Fit the model to the data
+model.fit(data)
+
+# Predict cluster labels
+data['Cluster'] = kmeans.predict(data)
+
+# Get cluster centroids
+centroids = kmeans.cluster_centers_
+
+# Visualize the clusters and centroids
+plt.scatter(data['Feature1'], data['Feature2'], c=data['Cluster'], cmap='Accent', marker='o', edgecolors='black')
+plt.show()
