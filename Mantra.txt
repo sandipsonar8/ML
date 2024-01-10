@@ -1,0 +1,60 @@
+[10-01-2024 00:35] : from sklearn.ensemble import RandomForestClassifier
+clr=RandomForestClassifier(n_estimators=10,criterion='entropy')
+clr.fit(x_train,y_train)
+
+[10-01-2024 00:44] : from sklearn.preprocessing import StandardScaler
+sc=StandardScaler()
+x_train=sc.fit_transform(x_train)
+x_test=sc.transform(x_test)
+
+[10-01-2024 00:44] : from sklearn.tree import DecisionTreeClassifier
+sc=DecisionTreeClassifier(criterion='entropy')
+sc.fit(x_train,y_train)
+
+[10-01-2024 00:45] : from sklearn.svm import SVC
+clr=SVC()
+clr.fit(x_train,y_train)
+
+[10-01-2024 00:46] : from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+obj=LabelEncoder()
+data.TEAM=obj.fit_transform(data.TEAM)
+data
+
+[10-01-2024 00:46] : obj=OneHotEncoder()
+data=pd.DataFrame(obj.fit_transform(data[['TEAM']]).toarray())
+data
+
+[10-01-2024 00:47] : df=pd.DataFrame(features,columns=iris.feature_names)
+df['Target']=iris.target
+df.head()
+
+[10-01-2024 00:47] : from sklearn.linear_model import LogisticRegression
+model=LogisticRegression()
+model.fit(x_train,y_train)
+y_pred=model.predict(x_test)
+from sklearn.metrics import accuracy_score
+accuracy_score(y_pred,y_test)
+
+[10-01-2024 00:49] : from sklearn.metrics import confusion_matrix,classification_report
+import seaborn as sb
+
+actual=[1,0,1,0,1,0,1,0,1,1,1,0]
+predict=[1,0,1,0,1,0,1,1,1,1,0,0]
+
+cm=confusion_matrix(actual,predict)
+
+sb.heatmap(cm,annot=True,cmap='Reds',
+          xticklabels=['predict 0','predict 1'],
+          yticklabels=['actual 0','actual 1']);
+
+[10-01-2024 00:50] : import matplotlib.pyplot as plt
+import seaborn as sb
+plt.figure(figsize=(6, 6))
+sb.heatmap(cm, annot=True, cmap='Reds',
+           xticklabels=iris.target_names,
+           yticklabels=iris.target_names)
+
+plt.xlabel('Predicted Label')
+plt.ylabel('True Label')
+plt.title('Confusion Matrix - Iris Dataset')
+plt.show()
