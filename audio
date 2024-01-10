@@ -1,0 +1,23 @@
+import librosa
+import librosa.display
+import matplotlib.pyplot as plt
+
+signal, sr = librosa.load('file.wav')
+
+    # Visualize the original audio signal
+    plt.figure(figsize=(14, 5))
+    librosa.display.waveshow(signal, sr=sr)
+    plt.title('Original Audio Signal')
+    plt.xlabel('Time (s)')
+    plt.ylabel('Amplitude')
+    plt.show()
+    
+    normalized_signal = signal / max(abs(signal))
+    
+    # Visualize the normalized audio signal
+    plt.figure(figsize=(14, 5))
+    librosa.display.waveshow(normalized_signal, sr=sr)
+    plt.title('Normalized Audio Signal')
+    plt.xlabel('Time (s)')
+    plt.ylabel('Amplitude')
+    plt.show()
